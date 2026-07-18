@@ -52,6 +52,5 @@ header > div {
 .hero-image {
     display: block;
     margin-left: auto;
-    margin-right: -24px;
-    width: 50vw;
+    width: 100%;
 }
