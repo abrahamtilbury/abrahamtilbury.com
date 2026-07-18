@@ -95,7 +95,7 @@ main > h1 {
 }
 
 /* ==========================
-   Track Components
+   Track Component
 ========================== */
 
 .track {
@@ -130,7 +130,7 @@ main > h1 {
 }
 
 .track img:hover {
-    transform: scale(1.04);
+    transform: scale(1.02);
 }
 
 .streaming-links {
@@ -210,7 +210,7 @@ a:active {
     .track {
         flex-direction: column;
         justify-content: flex-start;
-        margin: var(--track-space) var(--content-padding);
+        margin: var(--large-space) var(--content-padding);
         gap: var(--medium-space);
     }
 
