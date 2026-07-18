@@ -94,6 +94,10 @@ main > h1 {
     text-align: center;
 }
 
+.credit-role {
+    opacity: 0.7;
+}
+
 /* ==========================
    Track Component
 ========================== */
