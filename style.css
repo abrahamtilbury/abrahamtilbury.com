@@ -105,8 +105,9 @@ main > h1 {
 
 .track {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
+    gap: 80px;
     margin: 90px var(--page-margin);
 }
 
