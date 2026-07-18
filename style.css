@@ -35,11 +35,10 @@ img {
 }
 
 header {
-    padding: 20px;
+    padding: 3px 2px 2px;
 }
 
 header > div {
-    min-height: 120px;
     display: flex;
     justify-content: space-between;
     align-items: center;
