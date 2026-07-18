@@ -110,3 +110,8 @@ main > h2 {
     font-size: 16px;
     font-weight: 500;
 }
+
+.streaming-links {
+    display: flex;
+    gap: 20px;
+}
