@@ -11,30 +11,14 @@ nav {
 }
 
 header nav a {
-    color: white;
-    text-decoration: none;
     margin-left: 25px;
     font-size: 13px;
-    transition: color 0.2s;
-}
-
-nav a:hover {
-    color: #B3B3B3;
 }
 
 h1 {
     margin: 0;
     font-size: 16px;
     font-weight: 500;
-}
-
-.track a {
-    color: white;
-    text-decoration: none;
-}
-
-.track a:hover {
-    color: #B3B3B3;
 }
 
 main {
@@ -69,14 +53,8 @@ footer {
 }
 
 .social-links a {
-    color: white;
-    text-decoration: none;
     margin: 0 15px;
     font-size: 14px;
-}
-
-.social-links a:hover {
-    color: #B3B3B3;
 }
 
 .track {
@@ -102,7 +80,8 @@ footer {
 }
 
 .track img {
-    width: 300px;
+    width: 100%;
+    max-width: 300px;
     height: 300px;
     object-fit: cover;
 }
@@ -117,4 +96,20 @@ main > h1 {
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
+}
+
+header h1 a,
+header nav a,
+.track a,
+.social-links a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+header h1 a:hover,
+header nav a:hover,
+.track a:hover,
+.social-links a:hover {
+    color: #B3B3B3;
 }
