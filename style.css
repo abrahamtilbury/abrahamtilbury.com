@@ -3,4 +3,33 @@ body {
     color: white;
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
+    line-height: 1.6;
+}
+
+nav {
+    padding: 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-right: 25px;
+    transition: color 0.2s;
+}
+
+nav a:hover {
+    color: #B3B3B3;
+}
+
+h1 {
+    margin-top: 40px;
+}
+
+main {
+    padding: 0 20px 40px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
 }
