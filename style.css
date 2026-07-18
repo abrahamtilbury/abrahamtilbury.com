@@ -69,3 +69,29 @@ footer {
 .social-links a:hover {
     color: #B3B3B3;
 }
+
+.track {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 80px 50px;
+}
+
+.track-info {
+    max-width: 400px;
+}
+
+.track h2 {
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0 0 10px;
+}
+
+.track p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.track img {
+    width: 300px;
+}
