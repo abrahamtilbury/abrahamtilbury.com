@@ -10,7 +10,7 @@
     --color-background: rgb(23, 23, 23);
     --color-text: white;
     --color-hover: #B3B3B3;
-    --transition-fast: 0.3s;
+    --transition: 0.3s;
 
     --small-space: 12px;
     --medium-space: 24px;
@@ -50,24 +50,19 @@ img {
     height: auto;
 }
 
-a {
-    color: inherit;
-    text-decoration: none;
-}
-
 /* ==========================
    Header & Navigation
 ========================== */
 
 header {
-    padding: var(--small-space) 0;
+    padding: 0;
 }
 
 header > div {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: var(--small-space) var(--page-margin) var(--medium-space);
+    margin: 12px var(--page-margin) 12px;
 }
 
 header nav {
@@ -100,15 +95,15 @@ main > h1 {
 }
 
 /* ==========================
-   Components: Track
+   Track Components
 ========================== */
 
 .track {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    gap: 80px;
-    margin: 90px var(--page-margin);
+    gap: 120px;
+    margin: var(--large-space) var(--page-margin);
 }
 
 .track-info {
@@ -128,10 +123,10 @@ main > h1 {
 
 .track img {
     width: 100%;
-    max-width: 180px;
+    max-width: 200px;
     height: auto;
     object-fit: cover;
-    transition: transform var(--transition-fast);
+    transition: transform var(--transition);
 }
 
 .track img:hover {
@@ -171,20 +166,13 @@ footer {
    Link Styles
 ========================== */
 
-.site-title a,
-header nav a,
-.track a,
-.social-links a {
-    color: var(--color-text);
+a {
+    color: inherit;
     text-decoration: none;
-    transition: color var(--transition-fast);
-    cursor: pointer;
+    transition: color var(--transition);
 }
 
-header .site-title a:hover,
-header nav a:hover,
-.track a:hover,
-.social-links a:hover {
+a:hover {
     color: var(--color-hover);
 }
 
@@ -209,18 +197,19 @@ a:active {
 @media (max-width: 768px) {
 
     :root {
-        --track-space: 50px;
+        --large-space: 50px;
     }
 
     header > div {
         flex-direction: column;
         align-items: flex-start;
-        margin: var(--small-space) var(--content-padding) var(--medium-space);
+        margin: var(--small-space) var(--content-padding) var(--small-space);
         gap: var(--medium-space);
     }
 
     .track {
         flex-direction: column;
+        justify-content: flex-start;
         margin: var(--track-space) var(--content-padding);
         gap: var(--medium-space);
     }
