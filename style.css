@@ -14,7 +14,7 @@
 
     --small-space: 12px;
     --medium-space: 24px;
-    --large-space: 80px;
+    --large-space: 70px;
     --page-margin: 50px;
     --nav-gap: 25px;
     --footer-bottom: 40px;
@@ -90,6 +90,13 @@ main {
     width: 100%;
 }
 
+main > h1 {
+    margin: var(--large-space) 0 0;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+}
+
 /* ==========================
    Components: Track
 ========================== */
@@ -98,7 +105,7 @@ main {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin: var(--large-space) var(--page-margin);
+    margin: 90px var(--page-margin);
 }
 
 .track-info {
@@ -118,14 +125,14 @@ main {
 
 .track img {
     width: 100%;
-    max-width: 300px;
+    max-width: 180px;
     height: auto;
     object-fit: cover;
     transition: transform var(--transition-fast);
 }
 
 .track img:hover {
-    transform: scale(1.02);
+    transform: scale(1.04);
 }
 
 .streaming-links {
@@ -184,7 +191,7 @@ header nav a:hover,
 
 a:focus-visible {
     outline: 2px solid var(--color-text);
-    outline-offset: 4px;
+    outline-offset: 6px;
 }
 
 a:active {
@@ -199,7 +206,7 @@ a:active {
 @media (max-width: 768px) {
 
     :root {
-        --large-space: 50px;
+        --track-space: 50px;
     }
 
     header > div {
@@ -211,12 +218,12 @@ a:active {
 
     .track {
         flex-direction: column;
-        margin: var(--large-space) var(--content-padding);
+        margin: var(--track-space) var(--content-padding);
         gap: var(--medium-space);
-    }    
+    }
 
     .track img {
-        width: 300px;
+        width: 180px;
         max-width: 100%;
         align-self: center;
     }
