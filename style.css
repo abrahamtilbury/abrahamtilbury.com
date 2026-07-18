@@ -45,7 +45,7 @@ header > div {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 12px 50px 24px;
+    margin: 12px 50px 24px;
 }
 
 
