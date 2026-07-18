@@ -2,11 +2,15 @@
     box-sizing: border-box;
 }
 
+/* ==========================
+   Design Tokens
+========================== */
+
 :root {
-    --background: rgb(23, 23, 23);
-    --text: white;
-    --hover: #B3B3B3;
-    --transition: 0.3s;
+    --color-background: rgb(23, 23, 23);
+    --color-text: white;
+    --color-hover: #B3B3B3;
+    --transition-fast: 0.3s;
 
     --small-space: 12px;
     --medium-space: 24px;
@@ -19,23 +23,18 @@
     --social-gap: 15px;
 }
 
+/* ==========================
+   Base Styles
+========================== */
+
 body {
-    background-color: var(--background);
-    color: var(--text);
+    background-color: var(--color-background);
+    color: var(--color-text);
     font-family: "Commit Mono", monospace;
     margin: 0;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-}
-
-header nav {
-    display: flex;
-    gap: var(--nav-gap);
-}
-
-header nav a {
-    font-size: 13px;
 }
 
 h1 {
@@ -44,8 +43,8 @@ h1 {
     font-weight: 500;
 }
 
-main {
-    padding: 0 var(--content-padding) var(--content-bottom);
+.site-title {
+    margin: 0;
 }
 
 img {
@@ -53,6 +52,10 @@ img {
     max-width: 100%;
     height: auto;
 }
+
+/* ==========================
+   Header & Navigation
+========================== */
 
 header {
     padding: var(--small-space) 0;
@@ -65,20 +68,31 @@ header > div {
     margin: var(--small-space) var(--page-margin) var(--medium-space);
 }
 
+header nav {
+    display: flex;
+    gap: var(--nav-gap);
+}
+
+header nav a {
+    font-size: 13px;
+}
+
+/* ==========================
+   Main Content
+========================== */
+
+main {
+    padding: 0 var(--content-padding) var(--content-bottom);
+}
+
 .hero-image {
     display: block;
     width: 100%;
 }
 
-footer {
-    padding: var(--large-space) var(--page-margin) var(--footer-bottom);
-    text-align: center;
-}
-
-.social-links a {
-    margin: 0 var(--social-gap);
-    font-size: 14px;
-}
+/* ==========================
+   Components: Track
+========================== */
 
 .track {
     display: flex;
@@ -107,17 +121,11 @@ footer {
     max-width: 300px;
     height: auto;
     object-fit: cover;
-    transition: transform var(--transition);
+    transition: transform var(--transition-fast);
 }
 
 .track img:hover {
     transform: scale(1.02);
-}
-
-main > h1 {
-    margin: var(--large-space) 0 0;
-    font-size: 16px;
-    font-weight: 500;
 }
 
 .streaming-links {
@@ -126,22 +134,67 @@ main > h1 {
     flex-wrap: wrap;
 }
 
-header h1 a,
+/* ==========================
+   Footer
+========================== */
+
+footer {
+    padding: var(--large-space) var(--page-margin) var(--footer-bottom);
+    text-align: center;
+}
+
+/* ==========================
+   Social Links
+========================== */
+
+.social-links {
+    display: flex;
+    justify-content: center;
+}
+
+.social-links a {
+    margin: 0 var(--social-gap);
+    font-size: 14px;
+}
+
+/* ==========================
+   Link Styles
+========================== */
+
+header .site-title a,
 header nav a,
 .track a,
 .social-links a {
-    color: var(--text);
+    color: var(--color-text);
     text-decoration: none;
-    transition: color var(--transition);
+    transition: color var(--transition-fast);
     cursor: pointer;
 }
 
-header h1 a:hover,
+header .site-title a:hover,
 header nav a:hover,
 .track a:hover,
 .social-links a:hover {
-    color: var(--hover);
+    color: var(--color-hover);
 }
+
+/* ==========================
+   Accessibility
+========================== */
+
+a:focus-visible {
+    outline: 2px solid var(--color-text);
+    outline-offset: 4px;
+}
+
+a:active {
+    opacity: 0.7;
+}
+
+/* ==========================
+    Mobile Layout
+    Breakpoint: 768px
+========================== */
 
 @media (max-width: 768px) {
 
@@ -169,13 +222,11 @@ header nav a:hover,
     }
 
     footer {
-        padding: var(--large-space) var(--page-margin) var(--footer-bottom);
+        padding: var(--large-space) var(--content-padding) var(--footer-bottom);
     }
 
     .social-links {
-        display: flex;
         flex-wrap: wrap;
-        justify-content: center;
         gap: var(--medium-space);
     }
 
