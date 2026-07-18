@@ -28,6 +28,15 @@ h1 {
     font-weight: 500;
 }
 
+.track a {
+    color: white;
+    text-decoration: none;
+}
+
+.track a:hover {
+    color: #B3B3B3;
+}
+
 main {
     padding: 0 20px 40px;
 }
