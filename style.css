@@ -29,10 +29,6 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-nav {
-    padding: 0;
-}
-
 header nav {
     display: flex;
     gap: var(--nav-gap);
@@ -68,7 +64,6 @@ header > div {
     align-items: center;
     margin: var(--small-space) var(--page-margin) var(--medium-space);
 }
-
 
 .hero-image {
     display: block;
@@ -119,8 +114,8 @@ footer {
     transform: scale(1.02);
 }
 
-main h1 {
-    margin: var(--large-space) var(--page-margin) 0;
+main > h1 {
+    margin: var(--large-space) 0 0;
     font-size: 16px;
     font-weight: 500;
 }
@@ -153,7 +148,7 @@ header nav a:hover,
     :root {
         --large-space: 50px;
     }
-    
+
     header > div {
         flex-direction: column;
         align-items: flex-start;
@@ -161,14 +156,20 @@ header nav a:hover,
         gap: var(--medium-space);
     }
 
-    header nav a {
-        font-size: 12px;
-    }
-
     .track {
         flex-direction: column;
         margin: var(--large-space) var(--content-padding);
         gap: var(--medium-space);
+    }    
+
+    .track img {
+        width: 300px;
+        max-width: 100%;
+        align-self: center;
+    }
+
+    footer {
+        padding: var(--large-space) var(--page-margin) var(--footer-bottom);
     }
 
     .social-links {
@@ -178,18 +179,8 @@ header nav a:hover,
         gap: var(--medium-space);
     }
 
-    .hero-image {
-        height: 70vh;
-        object-fit: cover;
-        object-position: center top;
-    }
-    
     .social-links a {
         margin: 0;
-    }
-
-    footer {
-        padding: var(--large-space) var(--content-padding) var(--footer-bottom);
     }
 
 }
