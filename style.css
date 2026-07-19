@@ -157,7 +157,7 @@ main > h1 {
     transition: opacity 0.2s ease, transform var(--transition);
 }
 
-.track img:hover {
+.track a:hover img {
     opacity: 0.85;
     transform: scale(1.02);
 }
