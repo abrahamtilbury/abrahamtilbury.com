@@ -153,15 +153,17 @@ main > h1 {
     max-width: 220px;
     height: auto;
     object-fit: cover;
-    transition: transform var(--transition);
-}
-
-.track a img {
     cursor: pointer;
+    transition: opacity 0.2s ease, transform var(--transition);
 }
 
-.track a:hover img {
+.track img:hover {
+    opacity: 0.85;
     transform: scale(1.02);
+}
+
+.track a {
+    display: block;
 }
 
 .streaming-links {
