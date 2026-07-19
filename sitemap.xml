@@ -1,13 +1,21 @@
-abrahamtilbury.com/
-│
-├── index.html
-├── music.html
-├── collaborations.html
-├── contact.html
-├── style.css
-│
-├── images/
-│   ├── homepage.webp
-│   └── ...
-│
-└── sitemap.xml
+<?xml version="1.0" encoding="UTF-8"?>
+
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    <url>
+        <loc>https://abrahamtilbury.com/</loc>
+    </url>
+
+    <url>
+        <loc>https://abrahamtilbury.com/music.html</loc>
+    </url>
+
+    <url>
+        <loc>https://abrahamtilbury.com/collaborations.html</loc>
+    </url>
+
+    <url>
+        <loc>https://abrahamtilbury.com/contact.html</loc>
+    </url>
+
+</urlset>
