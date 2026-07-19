@@ -113,6 +113,9 @@ main > h1 {
     font-size: 14px;
 }
 
+.contact-intro {
+    margin-bottom: 24px;
+}
 /* ==========================
    Track Component
 ========================== */
