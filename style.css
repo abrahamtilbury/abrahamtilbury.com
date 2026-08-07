@@ -133,7 +133,7 @@ main > h1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 24px var(--page-margin);
+    margin: var(--large-space) var(--page-margin);
 }
 
 .track-info {
