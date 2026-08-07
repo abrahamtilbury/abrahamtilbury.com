@@ -130,15 +130,15 @@ main > h1 {
 ========================== */
 
 .track {
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) var(--image-width);
     align-items: center;
     gap: var(--large-space);
-    margin: var(--large-space) auto;
-    max-width: 1200px;
+    margin: var(--large-space) 0;
 }
 
 .track-info {
+    grid-column: 1;
     max-width: 400px;
 }
 
@@ -157,6 +157,11 @@ main > h1 {
     display: block;
     font-size: 13px;
     margin-top: 5px;
+}
+
+.track > a {
+    grid-column: 2;
+    justify-self: end;
 }
 
 .track img {
@@ -279,13 +284,19 @@ a:active {
 
     .track {
         width: 100%;
+        display: flex;
         flex-direction: column;
         justify-content: flex-start;
         margin: 35px auto;
         gap: var(--medium-space);
     }
 
+    .track > a {
+        width: 100%;
+    }
+
     .track img {
+        width: 100%;
         max-width: 100%;
     }
     
