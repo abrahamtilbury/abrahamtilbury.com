@@ -125,6 +125,12 @@ main > h1 {
 .contact-intro {
     margin-bottom: 24px;
 }
+
+.contact-image {
+    width: 100%;
+    height: auto;
+    margin-bottom: 18px;
+}
 /* ==========================
    Track Component
 ========================== */
