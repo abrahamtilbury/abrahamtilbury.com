@@ -21,8 +21,8 @@
     --content-padding: 20px;
     --content-bottom: 40px;
     --social-gap: 15px;
-    --track-width: 220px;
     --link-gap: 18px;
+    --image-width: 400px;
 }
 
 /* ==========================
@@ -131,9 +131,11 @@ main > h1 {
 
 .track {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    margin: var(--large-space) var(--page-margin);
+    gap: var(--large-space);
+    margin: var(--large-space) auto;
+    max-width: 1200px;
 }
 
 .track-info {
@@ -159,7 +161,7 @@ main > h1 {
 
 .track img {
     width: 100%;
-    max-width: 220px;
+    max-width: var(--image-width);
     height: auto;
     object-fit: cover;
     transition: opacity var(--transition), transform var(--transition);
@@ -276,7 +278,7 @@ a:active {
     }
 
     .track {
-        width: min(100%, var(--track-width));
+        width: 100%;
         flex-direction: column;
         justify-content: flex-start;
         margin: 35px auto;
@@ -289,7 +291,6 @@ a:active {
     
     .track-info {
         width: 100%;
-        max-width: none;
     }
 
     footer {
