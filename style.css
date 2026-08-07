@@ -263,6 +263,11 @@ a:active {
         max-width: 100%;
         align-self: center;
     }
+    
+    .track-info {
+        width: 180px;
+        max-width: 100%;
+    }
 
     footer {
         padding: var(--large-space) var(--content-padding) var(--footer-bottom);
