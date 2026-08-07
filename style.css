@@ -252,21 +252,21 @@ a:active {
     }
 
     .track {
+        width: 220px;
         flex-direction: column;
         justify-content: flex-start;
-        margin: 35px var(--content-padding);
+        margin: 35px auto;
         gap: var(--medium-space);
     }
 
     .track img {
-        width: 180px;
-        max-width: 100%;
-        align-self: center;
+        width: 100%;
+        max-width: none;
     }
     
     .track-info {
-        width: 180px;
-        max-width: 100%;
+        width: 100%;
+        max-width: none;
     }
 
     footer {
