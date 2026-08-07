@@ -293,7 +293,7 @@ a:active {
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
-        margin: 35px auto;
+        margin: 70px auto;
         gap: var(--medium-space);
     }
 
