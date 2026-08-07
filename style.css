@@ -22,6 +22,7 @@
     --content-bottom: 40px;
     --social-gap: 15px;
     --track-width: 220px;
+    --link-gap: 18px;
 }
 
 /* ==========================
@@ -154,13 +155,7 @@ main > h1 {
     max-width: 220px;
     height: auto;
     object-fit: cover;
-    transition: opacity 0.2s ease, transform var(--transition);
-}
-
-.track a {
-    display: block;
-    cursor: pointer;
-    text-decoration: none;
+    transition: opacity var(--transition), transform var(--transition);
 }
 
 .track a:hover img {
@@ -170,7 +165,8 @@ main > h1 {
 
 .streaming-links {
     display: flex;
-    gap: var(--medium-space);
+    align-items: center;
+    gap: var(--link-gap);
     flex-wrap: wrap;
     margin-top: 10px;
 }
@@ -191,11 +187,12 @@ footer {
 .social-links {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--social-gap);
 }
 
 .social-links a {
-    margin: 0 var(--social-gap);
-    font-size: 14px;
+    margin: 0;
 }
 
 /* ==========================
@@ -204,9 +201,22 @@ footer {
 
 a {
     color: inherit;
+    text-decoration: none;
+    transition: color var(--transition);
+}
+
+.streaming-links a,
+.contact a {
     text-decoration: underline;
     text-underline-offset: 3px;
-    transition: color var(--transition);
+    transition: text-decoration-thickness 0.2s ease,
+                text-underline-offset 0.2s ease;
+}
+
+.streaming-links a:hover,
+.contact a:hover {
+    text-decoration-thickness: 2px;
+    text-underline-offset: 5px;
 }
 
 a:hover {
@@ -243,17 +253,23 @@ a:active {
 
     :root {
         --large-space: 50px;
+        --page-margin: 20px;
     }
 
     header > div {
         flex-direction: column;
-        align-items: flex-start;
-        margin: var(--small-space) var(--content-padding) var(--small-space);
+        align-items: stretch;
         gap: var(--medium-space);
+    }
+    
+    header nav {
+        width: 100%;
+        justify-content: flex-end;
+        padding-right: 2px;
     }
 
     .track {
-        width: var(--track-width);
+        width: min(100%, var(--track-width));
         flex-direction: column;
         justify-content: flex-start;
         margin: 35px auto;
@@ -261,8 +277,7 @@ a:active {
     }
 
     .track img {
-        width: 100%;
-        max-width: none;
+        max-width: 100%;
     }
     
     .track-info {
@@ -272,15 +287,6 @@ a:active {
 
     footer {
         padding: var(--large-space) var(--content-padding) var(--footer-bottom);
-    }
-
-    .social-links {
-        flex-wrap: wrap;
-        gap: var(--medium-space);
-    }
-
-    .social-links a {
-        margin: 0;
     }
 
 }
