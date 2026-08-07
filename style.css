@@ -21,6 +21,7 @@
     --content-padding: 20px;
     --content-bottom: 40px;
     --social-gap: 15px;
+    --track-width: 220px;
 }
 
 /* ==========================
@@ -252,7 +253,7 @@ a:active {
     }
 
     .track {
-        width: 220px;
+        width: var(--track-width);
         flex-direction: column;
         justify-content: flex-start;
         margin: 35px auto;
