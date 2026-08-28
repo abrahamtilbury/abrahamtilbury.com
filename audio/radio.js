@@ -117,20 +117,20 @@
        VOLUME
     ======================================== */
 
-    const storedVolume =
-        Number(
-            localStorage.getItem(
-                VOLUME_KEY
-            )
+    const savedVolume =
+        localStorage.getItem(
+            VOLUME_KEY
         );
-
-
+    
+    
     audio.volume =
-        Number.isFinite(storedVolume)
-            ? clamp(storedVolume)
-            : DEFAULT_VOLUME;
-
-
+        savedVolume === null
+            ? DEFAULT_VOLUME
+            : clamp(
+                Number(savedVolume)
+            );
+    
+    
     volumeSlider.value =
         audio.volume;
 
