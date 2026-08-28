@@ -400,6 +400,10 @@ a:active {
     height: 38px;
 }
 
+.radio-volume[hidden],
+html.is-ios .radio-volume {
+    display: none !important;
+}
 
 .radio-volume input {
     width: 100%;
