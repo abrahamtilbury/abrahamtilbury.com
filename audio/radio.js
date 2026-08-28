@@ -108,6 +108,13 @@
         state = createFreshState();
     }
 
+    if (
+        typeof state.playTracked !==
+            "boolean"
+    ) {
+        state.playTracked =
+            state.currentTime > 0;
+    }
 
     let loadedTrackId = null;
     let loading = false;
@@ -148,15 +155,12 @@
                 createShuffle(
                     previousTrack
                 ),
-
             index: 0,
-
             currentTime: 0,
-
-            playing: false
+            playing: false,
+            playTracked: false
         };
     }
-
 
     function createShuffle(
         avoidFirst = null
@@ -239,6 +243,34 @@
         );
     }
 
+    function trackMusicPlay() {
+
+    const track =
+        getCurrentTrack();
+
+        if (
+            !track ||
+            state.playTracked
+        ) {
+            return;
+        }
+    
+        if (
+            window.umami &&
+            typeof window.umami.track ===
+                "function"
+        ) {
+    
+            window.umami.track(
+                "music-play",
+                {
+                    track: track.title
+                }
+            );
+        }
+    
+        state.playTracked = true;
+    }
 
     /* ========================================
        LOAD TRACK
@@ -349,15 +381,14 @@
 
             await audio.play();
 
-
             state.playing = true;
-
+            
+            trackMusicPlay();
+            
             saveState();
-
 
             status.textContent =
                 `Playing ${getCurrentTrack().title}`;
-
 
         } catch (error) {
 
@@ -366,16 +397,13 @@
                 error
             );
 
-
             state.playing = false;
 
             saveState();
 
-
             status.textContent =
                 "Radio paused";
         }
-
 
         loading = false;
 
@@ -383,7 +411,6 @@
 
         updatePlayButton();
     }
-
 
     /* ========================================
        PAUSE
@@ -395,11 +422,9 @@
 
         saveCurrentTime();
 
-
         state.playing = false;
 
         saveState();
-
 
         status.textContent =
             "Radio paused";
@@ -407,7 +432,6 @@
 
         updatePlayButton();
     }
-
 
     /* ========================================
        PLAY / PAUSE BUTTON
@@ -428,12 +452,10 @@
         }
     }
 
-
     playButton.addEventListener(
         "click",
         toggleRadio
     );
-
 
     function updatePlayButton() {
 
@@ -443,12 +465,10 @@
                 !audio.paused
             );
 
-
         playButton.textContent =
             isPlaying
                 ? "Ⅱ"
                 : "▶︎";
-
 
         playButton.setAttribute(
             "aria-label",
@@ -456,7 +476,6 @@
                 ? "Pause Abraham Tilbury Radio"
                 : "Play Abraham Tilbury Radio"
         );
-
 
         const track =
             getCurrentTrack();
@@ -469,18 +488,15 @@
         }
     }
 
-
     audio.addEventListener(
         "play",
         updatePlayButton
     );
 
-
     audio.addEventListener(
         "pause",
         updatePlayButton
     );
-
 
     /* ========================================
        AUTOMATIC NEXT SONG
@@ -493,15 +509,12 @@
         advanceRadio
     );
 
-
     async function advanceRadio() {
 
         const previousTrack =
             getCurrentTrack();
 
-
         state.index += 1;
-
 
         /*
          * Finished all 8 tracks.
@@ -523,15 +536,13 @@
             state.index = 0;
         }
 
-
         state.currentTime = 0;
         state.playing = true;
-
+        state.playTracked = false;
+        
         saveState();
 
-
         loadedTrackId = null;
-
 
         audio.removeAttribute(
             "src"
@@ -539,18 +550,18 @@
 
         audio.load();
 
-
         loadCurrentTrack();
-
 
         try {
 
             await audio.play();
-
-
+        
+            trackMusicPlay();
+        
+            saveState();
+        
             status.textContent =
                 `Playing ${getCurrentTrack().title}`;
-
 
         } catch (error) {
 
@@ -559,20 +570,16 @@
                 error
             );
 
-
             state.playing = false;
 
             saveState();
-
 
             status.textContent =
                 "Press play to continue";
         }
 
-
         updatePlayButton();
     }
-
 
     /* ========================================
        VOLUME
@@ -593,14 +600,12 @@
             audio.volume =
                 volume;
 
-
             localStorage.setItem(
                 VOLUME_KEY,
                 String(volume)
             );
         }
     );
-
 
     /* ========================================
        SAVE CURRENT TIME
@@ -625,7 +630,6 @@
         saveState();
     }
 
-
     /* ========================================
        LEAVING THIS HTML PAGE
     ======================================== */
@@ -649,7 +653,6 @@
         }
     );
 
-
     document.addEventListener(
         "visibilitychange",
         () => {
@@ -664,7 +667,6 @@
         }
     );
 
-
     /* ========================================
        RESTORE AFTER SITE NAVIGATION
     ======================================== */
@@ -672,7 +674,6 @@
     async function restoreRadio() {
 
         updatePlayButton();
-
 
         /*
          * Fresh visit / paused radio:
@@ -691,10 +692,8 @@
 
             await audio.play();
 
-
             status.textContent =
                 `Playing ${getCurrentTrack().title}`;
-
 
         } catch {
 
@@ -713,10 +712,8 @@
                 "Press play to continue";
         }
 
-
         updatePlayButton();
     }
-
 
     /* ========================================
        PHONE / OS MEDIA METADATA
@@ -726,7 +723,6 @@
 
         const track =
             getCurrentTrack();
-
 
         if (
             !track ||
