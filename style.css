@@ -229,16 +229,6 @@ footer {
     margin: 0;
 }
 
-.footer-privacy {
-    margin: 12px 0 0;
-    font-size: 12px;
-}
-
-.footer-privacy a {
-    text-decoration: underline;
-    text-underline-offset: 3px;
-}
-
 /* ==========================
    Link Styles
 ========================== */
