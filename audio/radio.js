@@ -35,11 +35,6 @@ const TRACKS = [
         file: "racks.mp3"
     },
     {
-        id: "song",
-        title: "Song",
-        file: "song.mp3"
-    },
-    {
         id: "soright",
         title: "So Right",
         file: "soright.mp3"
