@@ -2,7 +2,6 @@
 
     "use strict";
 
-
     /* ========================================
        TRACK LIST
     ======================================== */
@@ -245,9 +244,10 @@
 
     function trackMusicPlay() {
 
-    const track =
-        getCurrentTrack();
-
+        const track =
+            getCurrentTrack();
+    
+    
         if (
             !track ||
             state.playTracked
@@ -255,39 +255,25 @@
             return;
         }
     
-        function trackMusicPlay() {
-
-            const track =
-                getCurrentTrack();
-        
-        
-            if (
-                !track ||
-                state.playTracked
-            ) {
-                return;
-            }
-        
-        
-            if (
-                !window.umami ||
-                typeof window.umami.track !==
-                    "function"
-            ) {
-                return;
-            }
-        
-        
-            window.umami.track(
-                "music-play",
-                {
-                    track: track.title
-                }
-            );
-        
-        
-            state.playTracked = true;
+    
+        if (
+            !window.umami ||
+            typeof window.umami.track !==
+                "function"
+        ) {
+            return;
         }
+    
+    
+        window.umami.track(
+            "music-play",
+            {
+                track: track.title
+            }
+        );
+    
+    
+        state.playTracked = true;
     }
 
     /* ========================================
