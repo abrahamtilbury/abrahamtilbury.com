@@ -849,9 +849,11 @@
             );
 
 
-        return candidate.order.every(
-            id =>
-                validIds.has(id)
+        return (
+            candidate.order.every(
+                id => validIds.has(id)
+            ) &&
+            new Set(candidate.order).size === TRACKS.length
         );
     }
 
