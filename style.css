@@ -2,6 +2,11 @@
     box-sizing: border-box;
 }
 
+html {
+    background-color: rgb(23, 23, 23);
+    color-scheme: dark;
+}
+
 /* ==========================
    Design Tokens
 ========================== */
