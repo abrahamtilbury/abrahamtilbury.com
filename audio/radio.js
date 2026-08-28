@@ -66,13 +66,23 @@
 
     const playButton =
         document.querySelector("[data-radio-play]");
-
+    
     const volumeSlider =
         document.querySelector("[data-radio-volume]");
-
+    
     const status =
         document.querySelector("[data-radio-status]");
-
+    
+    
+    if (
+        !playButton ||
+        !volumeSlider ||
+        !status
+    ) {
+        return;
+    }
+    
+    
     const volumeControl =
         volumeSlider.closest(
             ".radio-volume"
@@ -80,29 +90,23 @@
     
     
     const isIOS =
-        /iPad|iPhone|iPod/.test(
+        /iPhone|iPad|iPod/i.test(
             navigator.userAgent
         ) ||
         (
-            navigator.platform ===
-                "MacIntel" &&
+            navigator.userAgent.includes("Mac") &&
             navigator.maxTouchPoints > 1
         );
     
     
-    if (
-        isIOS &&
-        volumeControl
-    ) {
-        volumeControl.hidden = true;
-    }
-
-    if (
-        !playButton ||
-        !volumeSlider ||
-        !status
-    ) {
-        return;
+    if (isIOS) {
+    
+        document.documentElement
+            .classList.add("is-ios");
+    
+        if (volumeControl) {
+            volumeControl.hidden = true;
+        }
     }
 
 
