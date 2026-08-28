@@ -89,6 +89,10 @@ header nav a:hover {
    Main Content
 ========================== */
 
+.home-main {
+    padding: 0;
+}
+
 main {
     padding: 0 var(--content-padding) var(--content-bottom);
 }
