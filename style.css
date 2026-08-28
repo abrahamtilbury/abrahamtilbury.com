@@ -158,8 +158,9 @@ main > h1 {
 }
 
 .track h2 {
-    font-size: 18px;
+    font-size: 26px;
     font-weight: 500;
+    line-height: 1.2;
     margin: 0 0 6px;
 }
 
@@ -252,10 +253,6 @@ a:hover {
     color: var(--color-hover);
 }
 
-header nav a:hover {
-    border-color: rgba(255, 255, 255, 0.18);
-}
-
 /* ==========================
         Current Page 
 ========================== */
@@ -266,10 +263,6 @@ header nav a.active:hover {
     font-weight: 500;
 }
 
-header nav a.active {
-    border-color: rgba(255, 255, 255, 0.45);
-    font-weight: 500;
-}
 /* ==========================
    Accessibility
 ========================== */
