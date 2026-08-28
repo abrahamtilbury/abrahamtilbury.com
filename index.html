@@ -37,18 +37,47 @@
     <!-- Header / Navigation -->
     <header>
         <div>
-            <h1 class="site-title">
-                <a href="index.html">Abraham Tilbury</a>
-            </h1>
-        
+            <div class="header-left">
+                <h1 class="site-title">
+                    <a href="index.html">Abraham Tilbury</a>
+                </h1>
+                <div
+                    class="site-radio"
+                    aria-label="Abraham Tilbury Radio">
+                    <button
+                        class="radio-play"
+                        data-radio-play
+                        type="button"
+                        aria-label="Play Abraham Tilbury Radio">
+                        ▶︎
+                    </button>
+                    <label class="radio-volume">
+                        <span class="visually-hidden">
+                            Radio volume
+                        </span>
+                        <input
+                            data-radio-volume
+                            type="range"
+                            min="0"
+                            max="1"
+                            step="0.01"
+                            value="0.72"
+                            aria-label="Radio volume">
+                    </label>
+                    <span
+                        class="visually-hidden"
+                        data-radio-status
+                        aria-live="polite">
+                        Radio paused
+                    </span>
+                </div>
+            </div>
             <nav aria-label="Main navigation">
                 <a href="music.html">Music</a>
                 <a href="collaborations.html">Collaborations</a>
                 <a href="contact.html">Contact</a>
             </nav>
-            
         </div>
-
         <!-- Hero Image -->
         <img 
             class="hero-image"
