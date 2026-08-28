@@ -73,6 +73,29 @@
     const status =
         document.querySelector("[data-radio-status]");
 
+    const volumeControl =
+        volumeSlider.closest(
+            ".radio-volume"
+        );
+    
+    
+    const isIOS =
+        /iPad|iPhone|iPod/.test(
+            navigator.userAgent
+        ) ||
+        (
+            navigator.platform ===
+                "MacIntel" &&
+            navigator.maxTouchPoints > 1
+        );
+    
+    
+    if (
+        isIOS &&
+        volumeControl
+    ) {
+        volumeControl.hidden = true;
+    }
 
     if (
         !playButton ||
@@ -123,22 +146,25 @@
        VOLUME
     ======================================== */
 
-    const savedVolume =
-        localStorage.getItem(
-            VOLUME_KEY
-        );
-    
-    
-    audio.volume =
-        savedVolume === null
-            ? DEFAULT_VOLUME
-            : clamp(
-                Number(savedVolume)
+    if (!isIOS) {
+
+        const savedVolume =
+            localStorage.getItem(
+                VOLUME_KEY
             );
     
     
-    volumeSlider.value =
-        audio.volume;
+        audio.volume =
+            savedVolume === null
+                ? DEFAULT_VOLUME
+                : clamp(
+                    Number(savedVolume)
+                );
+    
+    
+        volumeSlider.value =
+            audio.volume;
+    }
 
 
     /* ========================================
@@ -589,27 +615,31 @@
        VOLUME
     ======================================== */
 
-    volumeSlider.addEventListener(
-        "input",
-        event => {
+    if (!isIOS) {
 
-            const volume =
-                clamp(
-                    Number(
-                        event.target.value
-                    )
+        volumeSlider.addEventListener(
+            "input",
+            event => {
+    
+                const volume =
+                    clamp(
+                        Number(
+                            event.target.value
+                        )
+                    );
+    
+    
+                audio.volume =
+                    volume;
+    
+    
+                localStorage.setItem(
+                    VOLUME_KEY,
+                    String(volume)
                 );
-
-
-            audio.volume =
-                volume;
-
-            localStorage.setItem(
-                VOLUME_KEY,
-                String(volume)
-            );
-        }
-    );
+            }
+        );
+    }
 
     /* ========================================
        SAVE CURRENT TIME
