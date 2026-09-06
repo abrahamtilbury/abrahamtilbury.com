@@ -491,6 +491,37 @@
         toggleRadio
     );
 
+    function emitRadioState(
+        isPlaying,
+        track
+    ) {
+    
+        window.dispatchEvent(
+            new CustomEvent(
+                "abraham-radio-state",
+                {
+                    detail: {
+    
+                        playing:
+                            isPlaying,
+    
+                        track:
+                            track
+                                ? {
+                                    id:
+                                        track.id,
+    
+                                    title:
+                                        track.title
+                                }
+                                : null
+                    }
+                }
+            )
+        );
+    }
+    
+    
     function updatePlayButton() {
 
         const isPlaying =
@@ -515,11 +546,21 @@
             getCurrentTrack();
 
 
+        const track =
+            getCurrentTrack();
+        
+        
         if (track) {
-
+        
             playButton.title =
                 track.title;
         }
+        
+        
+        emitRadioState(
+            isPlaying,
+            track
+        );
     }
 
     audio.addEventListener(
