@@ -30,13 +30,18 @@ jobs:
           node-version: "20"
 
 
-      - name: Pull counts from Umami
+      - name: Install Google authentication library
+        run: npm install google-auth-library
+
+
+      - name: Pull counts from GA4
         run: node scripts/update-play-counts.mjs
         env:
-          UMAMI_API_KEY: ${{ secrets.UMAMI_API_KEY }}
+          GA4_PROPERTY_ID:
+            ${{ secrets.GA4_PROPERTY_ID }}
 
-          UMAMI_WEBSITE_ID:
-            a409f5fd-678a-4f97-be86-8a291cf7831a
+          GA4_SERVICE_ACCOUNT_JSON:
+            ${{ secrets.GA4_SERVICE_ACCOUNT_JSON }}
 
 
       - name: Commit updated counts
