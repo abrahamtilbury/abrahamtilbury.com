@@ -295,8 +295,9 @@
         }
     
     
-        window.umami.track(
-            "music-play",
+        gtag(
+            "event",
+            "music_play",
             {
                 track: track.title
             }
