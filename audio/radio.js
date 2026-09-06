@@ -545,11 +545,6 @@
 
         const track =
             getCurrentTrack();
-
-
-        const track =
-            getCurrentTrack();
-        
         
         if (track) {
         
