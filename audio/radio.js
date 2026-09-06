@@ -287,15 +287,14 @@
     
     
         if (
-            !window.umami ||
-            typeof window.umami.track !==
+            typeof window.gtag !==
                 "function"
         ) {
             return;
         }
     
     
-        gtag(
+        window.gtag(
             "event",
             "music_play",
             {
