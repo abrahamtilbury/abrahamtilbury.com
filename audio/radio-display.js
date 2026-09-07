@@ -12,7 +12,7 @@
      * Speed of each one-character movement.
      * Higher number = slower.
      */
-    const SCROLL_STEP_MS = 430;
+    const SCROLL_MS_PER_CHARACTER = 650;
 
     /*
      * Pause briefly before scrolling starts.
@@ -63,7 +63,7 @@
 
     let radioPlaying = false;
 
-    let scrollTimer = null;
+    let scrollAnimation = null;
 
     /* ========================================
        SCROLL CONTROL
@@ -71,14 +71,15 @@
 
     function stopScroll() {
 
-        if (scrollTimer !== null) {
-
-            window.clearTimeout(
-                scrollTimer
-            );
-
-            scrollTimer = null;
+        if (scrollAnimation) {
+    
+            scrollAnimation.cancel();
+    
+            scrollAnimation = null;
         }
+    
+        displayText.style.transform =
+            "translateX(0)";
     }
 
     /* ========================================
@@ -150,19 +151,15 @@
     function startScroll(
         message
     ) {
-
+    
         stopScroll();
-
-        /*
-         * Don't animate for people who have
-         * reduced-motion enabled.
-         */
+    
         if (
             reduceMotion.matches ||
             message.length <=
                 DISPLAY_WIDTH
         ) {
-
+    
             displayText.textContent =
                 message
                     .slice(
@@ -173,65 +170,68 @@
                         DISPLAY_WIDTH,
                         " "
                     );
-
+    
             return;
         }
-
+    
         /*
-         * Three spaces create a visible gap
-         * between repetitions.
+         * Repeat the complete message twice so
+         * the ticker can loop seamlessly.
          */
         const cycle =
             `${message}   `;
-
+    
+        displayText.textContent =
+            `${cycle}${cycle}`;
+    
         /*
-         * Add enough beginning characters
-         * to allow a seamless final frame.
+         * 650 ms per character keeps approximately
+         * the same readable rhythm as the old
+         * ticker, but movement is continuous.
          */
-        const loopText =
-            cycle +
-            cycle.slice(
-                0,
-                DISPLAY_WIDTH
+        const scrollDuration =
+            cycle.length *
+            SCROLL_MS_PER_CHARACTER;
+    
+        const totalDuration =
+            SCROLL_HOLD_MS +
+            scrollDuration;
+    
+        const holdOffset =
+            SCROLL_HOLD_MS /
+            totalDuration;
+    
+        scrollAnimation =
+            displayText.animate(
+                [
+                    {
+                        transform:
+                            "translateX(0)",
+                        offset: 0
+                    },
+                    {
+                        transform:
+                            "translateX(0)",
+                        offset:
+                            holdOffset
+                    },
+                    {
+                        transform:
+                            `translateX(-${cycle.length}ch)`,
+                        offset: 1
+                    }
+                ],
+                {
+                    duration:
+                        totalDuration,
+    
+                    iterations:
+                        Infinity,
+    
+                    easing:
+                        "linear"
+                }
             );
-
-        let offset = 0;
-
-        function renderFrame() {
-
-            displayText.textContent =
-                loopText
-                    .slice(
-                        offset,
-                        offset +
-                            DISPLAY_WIDTH
-                    )
-                    .padEnd(
-                        DISPLAY_WIDTH,
-                        " "
-                    );
-
-            /*
-             * Longer pause when title first
-             * reaches the left side.
-             */
-            const delay =
-                offset === 0
-                    ? SCROLL_HOLD_MS
-                    : SCROLL_STEP_MS;
-
-            offset =
-                (offset + 1) %
-                cycle.length;
-
-            scrollTimer =
-                window.setTimeout(
-                    renderFrame,
-                    delay
-                );
-        }
-
-        renderFrame();
     }
 
     /* ========================================
