@@ -58,7 +58,9 @@
 
     const STATE_KEY = "at-radio-state";
     const VOLUME_KEY = "at-radio-volume";
-
+    
+    const PLAY_COUNT_URL =
+        "https://abraham-radio-counter.abrahamtilbury.workers.dev/play";
 
     /* ========================================
        CONTROLS
@@ -286,24 +288,108 @@
         }
     
     
+        /*
+         * Mark this track immediately so
+         * pause/resume cannot count twice.
+         */
+        state.playTracked = true;
+    
+    
+        /*
+         * Keep GA4 music analytics.
+         * The visible counter does not
+         * depend on GA4.
+         */
         if (
-            typeof window.gtag !==
+            typeof window.gtag ===
                 "function"
         ) {
-            return;
+    
+            window.gtag(
+                "event",
+                "music_play",
+                {
+                    track:
+                        track.title
+                }
+            );
         }
     
     
-        window.gtag(
-            "event",
-            "music_play",
+        /*
+         * Increment the public aggregate
+         * play counter.
+         */
+        fetch(
+            PLAY_COUNT_URL,
             {
-                track: track.title
+                method:
+                    "POST",
+    
+                body:
+                    track.id,
+    
+                keepalive:
+                    true
             }
-        );
+        )
+            .then(
+                response => {
+    
+                    if (!response.ok) {
+    
+                        throw new Error(
+                            `HTTP ${response.status}`
+                        );
+                    }
     
     
-        state.playTracked = true;
+                    return response.json();
+                }
+            )
+            .then(
+                payload => {
+    
+                    const count =
+                        Number(
+                            payload.count
+                        );
+    
+    
+                    if (
+                        !Number.isFinite(
+                            count
+                        )
+                    ) {
+                        return;
+                    }
+    
+    
+                    window.dispatchEvent(
+                        new CustomEvent(
+                            "abraham-radio-count",
+                            {
+                                detail: {
+    
+                                    trackId:
+                                        track.id,
+    
+                                    count
+                                }
+                            }
+                        )
+                    );
+                }
+            )
+            .catch(
+                error => {
+    
+                    console.warn(
+                        "Radio play count unavailable:",
+                        error
+                    );
+                }
+            );
     }
 
     /* ========================================
