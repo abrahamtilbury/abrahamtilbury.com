@@ -19,14 +19,14 @@ html {
 
     --small-space: 12px;
     --medium-space: 24px;
-    --large-space: 70px;
-    --page-margin: 50px;
-    --nav-gap: 12px;
-    --footer-bottom: 40px;
-    --content-padding: 20px;
-    --content-bottom: 40px;
-    --social-gap: 15px;
-    --link-gap: 18px;
+    --large-space: 64px;
+    --page-margin: 48px;
+    --content-padding: 24px;
+    --content-bottom: 32px;
+    --social-gap: 16px;
+    --link-gap: 16px;
+    
+    --footer-top: 32px;
     --image-width: 400px;
 }
 
@@ -108,7 +108,7 @@ main {
 }
 
 main > h1 {
-    margin: 35px 0 0;
+    margin: 32px 0 0;
     font-size: 16px;
     font-weight: 500;
     text-align: center;
@@ -131,7 +131,7 @@ main > h1 {
 
 .contact {
     max-width: 500px;
-    margin: 45px auto 0;
+    margin: 48px auto 0;
     text-align: center;
 }
 
@@ -215,7 +215,11 @@ main > h1 {
 ========================== */
 
 footer {
-    padding: var(--large-space) var(--page-margin) var(--footer-bottom);
+    padding:
+        var(--footer-top)
+        var(--page-margin)
+        var(--footer-bottom);
+
     text-align: center;
 }
 
@@ -293,8 +297,9 @@ a:active {
 @media (max-width: 768px) {
 
     :root {
-        --large-space: 50px;
-        --page-margin: 20px;
+        --large-space: 48px;
+        --page-margin: 24px;
+        --footer-top: 32px;
     }
 
     header > div {
