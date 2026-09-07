@@ -647,6 +647,15 @@
         updatePlayButton
     );
 
+    /*
+     * Re-sync the radio UI whenever Safari
+     * shows or restores the page.
+     */
+    window.addEventListener(
+        "pageshow",
+        updatePlayButton
+    );
+
     /* ========================================
        AUTOMATIC NEXT SONG
 
