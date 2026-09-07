@@ -94,17 +94,28 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Abraham Tilbury",
-      "url": "https://abrahamtilbury.com/",
-      "image": "https://abrahamtilbury.com/images/homepage.webp",
-      "description": "Australian electronic musician, songwriter and electronics technician.",
-      "sameAs": [
-        "https://open.spotify.com/artist/4aQXVB8RpVJTrpQoKdkE4M",
-        "https://www.instagram.com/abrahamtilbury/",
-        "https://youtube.com/@AbrahamTilbury",
-        "https://soundcloud.com/abrahamtilbury",
-        "https://abrahamtilbury.bandcamp.com/"
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://abrahamtilbury.com/#website",
+          "url": "https://abrahamtilbury.com/",
+          "name": "Abraham Tilbury"
+        },
+        {
+          "@type": "Person",
+          "@id": "https://abrahamtilbury.com/#person",
+          "name": "Abraham Tilbury",
+          "url": "https://abrahamtilbury.com/",
+          "image": "https://abrahamtilbury.com/images/homepage.webp",
+          "description": "Australian electronic musician, songwriter and producer.",
+          "sameAs": [
+            "https://open.spotify.com/artist/4aQXVB8RpVJTrpQoKdkE4M",
+            "https://www.instagram.com/abrahamtilbury/",
+            "https://youtube.com/@AbrahamTilbury",
+            "https://soundcloud.com/abrahamtilbury",
+            "https://abrahamtilbury.bandcamp.com/"
+          ]
+        }
       ]
     }
     </script>
