@@ -316,32 +316,71 @@
     /* ========================================
        RADIO EVENTS
     ======================================== */
-
+    
     window.addEventListener(
         "abraham-radio-state",
         event => {
-
+    
             const detail =
                 event.detail || {};
-
-
+    
+    
             radioPlaying =
                 Boolean(
                     detail.playing
                 );
-
-
+    
+    
             currentTrack =
                 detail.track &&
                 typeof detail.track.id ===
                     "string" &&
                 typeof detail.track.title ===
                     "string"
-
+    
                     ? detail.track
                     : null;
-
-
+    
+    
+            updateDisplay();
+        }
+    );
+    
+    
+    /*
+     * Update the visible count immediately
+     * after the Worker records a new play.
+     */
+    window.addEventListener(
+        "abraham-radio-count",
+        event => {
+    
+            const detail =
+                event.detail || {};
+    
+    
+            if (
+                typeof detail.trackId !==
+                    "string" ||
+                !Number.isFinite(
+                    detail.count
+                )
+            ) {
+                return;
+            }
+    
+    
+            playCounts[
+                detail.trackId
+            ] =
+                Math.max(
+                    0,
+                    Math.trunc(
+                        detail.count
+                    )
+                );
+    
+    
             updateDisplay();
         }
     );
