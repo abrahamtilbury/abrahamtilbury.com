@@ -94,6 +94,14 @@ header nav a:hover {
    Main Content
 ========================== */
 
+.home-intro {
+    margin: var(--medium-space) auto 0;
+    padding: 0 var(--content-padding);
+    max-width: 700px;
+    font-size: 14px;
+    text-align: center;
+}
+
 .home-main {
     padding: 0;
 }
