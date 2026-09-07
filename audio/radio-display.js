@@ -124,13 +124,6 @@
             formatPlayCount(
                 currentTrack.id
             );
-
-        if (!Number.isFinite(rawCount)) {
-
-            return currentTrack
-                .title
-                .toUpperCase();
-        }
         
         if (!Number.isFinite(rawCount)) {
 
@@ -398,7 +391,7 @@
 
             const response =
                 await fetch(
-                    `${COUNTS_URL}?v=${Date.now()}`,
+                    COUNTS_URL,
                     {
                         cache:
                             "no-store"
