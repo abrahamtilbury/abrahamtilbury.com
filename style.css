@@ -362,19 +362,15 @@ a:active {
 .radio-display {
     flex: 0 0 auto;
 
-    width: calc(9ch + 14px);
-    height: 22px;
+    width: 9ch;
+    height: 16px;
 
-    padding: 2px 6px;
+    padding: 0;
 
     overflow: hidden;
 
-    border:
-        1px solid
-        rgba(255, 255, 255, 0.22);
-
-    background:
-        rgba(255, 255, 255, 0.035);
+    border: 0;
+    background: transparent;
 
     color: var(--color-text);
 
@@ -386,7 +382,7 @@ a:active {
     font-weight: 500;
     line-height: 16px;
 
-    letter-spacing: 0.05em;
+    letter-spacing: 0;
 
     font-variant-numeric:
         tabular-nums;
