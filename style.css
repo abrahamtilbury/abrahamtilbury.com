@@ -27,7 +27,6 @@ html {
     --social-gap: 16px;
     --link-gap: 16px;
     --chrome-space: 8px;
-    --footer-top: 32px;
     --image-width: 400px;
 }
 
@@ -70,7 +69,9 @@ header > div {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 8px var(--page-margin);
+    margin:
+        var(--chrome-space)
+        var(--page-margin);
 }
 
 header nav {
@@ -217,11 +218,17 @@ main > h1 {
 
 footer {
     padding:
-        var(--footer-top)
+        var(--chrome-space)
         var(--page-margin)
-        var(--footer-bottom);
-
+        var(--chrome-space);
     text-align: center;
+}
+
+footer p {
+    margin:
+        var(--chrome-space)
+        0
+        0;
 }
 
 /* ==========================
@@ -300,7 +307,6 @@ a:active {
     :root {
         --large-space: 48px;
         --page-margin: 24px;
-        --footer-top: 32px;
     }
 
     header > div {
@@ -320,7 +326,7 @@ a:active {
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
-        margin: 70px auto;
+        margin: var(--large-space) auto;
         gap: var(--medium-space);
     }
 
@@ -338,7 +344,10 @@ a:active {
     }
 
     footer {
-        padding: var(--large-space) var(--content-padding) var(--footer-bottom);
+        padding:
+            var(--chrome-space)
+            var(--content-padding)
+            var(--chrome-space);
     }
 
 }
