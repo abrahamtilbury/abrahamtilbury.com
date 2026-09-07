@@ -21,11 +21,12 @@ html {
     --medium-space: 24px;
     --large-space: 64px;
     --page-margin: 48px;
+    --nav-gap: 12px;
     --content-padding: 24px;
     --content-bottom: 32px;
     --social-gap: 16px;
     --link-gap: 16px;
-    
+    --chrome-space: 8px;
     --footer-top: 32px;
     --image-width: 400px;
 }
