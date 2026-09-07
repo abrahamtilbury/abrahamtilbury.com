@@ -135,12 +135,20 @@
                 currentTrack.id
             );
 
+        if (!Number.isFinite(rawCount)) {
+
+            return currentTrack
+                .title
+                .toUpperCase();
+        }
+        
+        
         const playWord =
             rawCount === 1
                 ? "PLAY"
                 : "PLAYS";
-
-
+        
+        
         return (
             `${currentTrack.title} · ` +
             `${countLabel} ${playWord}`
