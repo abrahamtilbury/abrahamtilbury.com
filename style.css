@@ -358,15 +358,13 @@ a:active {
 /* ==========================
    Radio Track Display
 ========================== */
-
+    
 .radio-display {
+    position: relative;
     flex: 0 0 auto;
     width: 9ch;
     height: 16px;
-    padding: 0;
     overflow: hidden;
-    border: 0;
-    background: transparent;
     color: var(--color-text);
     font-family:
         "Commit Mono",
@@ -374,29 +372,26 @@ a:active {
     font-size: 10px;
     font-weight: 500;
     line-height: 16px;
-    letter-spacing: 0;
-    font-variant-numeric:
-        tabular-nums;
     white-space: pre;
 }
-
 
 .radio-display[hidden] {
     display: none !important;
 }
 
-
 .radio-display-text {
+    position: absolute;
+    top: 0;
+    left: 0;
     display: block;
-    width: 9ch;
+    width: 100%;
     height: 16px;
+    margin: 0;
+    padding: 0;
     overflow: hidden;
     color: inherit;
     font: inherit;
     line-height: 16px;
-    opacity: 1;
-    visibility: visible;
-    overflow: hidden;
     white-space: pre;
 }
 
@@ -536,11 +531,9 @@ html.is-ios .radio-volume {
 /* Reduced motion */
 
 @media (prefers-reduced-motion: reduce) {
-
     .radio-play {
         transition: none;
     }
-
 }
 
 @view-transition {
