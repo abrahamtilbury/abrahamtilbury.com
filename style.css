@@ -361,32 +361,22 @@ a:active {
 
 .radio-display {
     flex: 0 0 auto;
-
     width: 9ch;
     height: 16px;
-
     padding: 0;
-
     overflow: hidden;
-
     border: 0;
     background: transparent;
-
     color: var(--color-text);
-
     font-family:
         "Commit Mono",
         monospace;
-
     font-size: 10px;
     font-weight: 500;
     line-height: 16px;
-
     letter-spacing: 0;
-
     font-variant-numeric:
         tabular-nums;
-
     white-space: pre;
 }
 
