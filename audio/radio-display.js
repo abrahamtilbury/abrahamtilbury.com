@@ -262,15 +262,17 @@
     ======================================== */
 
     function hideDisplay() {
-
         stopScroll();
-
         display.hidden = true;
-
+        display.setAttribute(
+            "aria-hidden",
+            "true"
+    
+        );
         display.removeAttribute(
             "title"
         );
-
+    
         displayText.textContent = "";
     }
 
@@ -281,42 +283,60 @@
 
     function updateDisplay() {
 
-        /*
-         * Requirement:
-         * only exist visually while a track
-         * is actually playing.
-         */
         if (
             !radioPlaying ||
             !currentTrack
         ) {
-
+    
             hideDisplay();
-
+    
             return;
         }
-
-
+    
+    
         const countLabel =
             formatPlayCount(
                 currentTrack.id
             );
-
-
+    
+    
+        const message =
+            getDisplayMessage() ||
+            currentTrack.title.toUpperCase();
+    
+    
         display.hidden = false;
-
-
-        /*
-         * Desktop hover gives the complete
-         * information without scrolling.
-         */
+    
+        display.setAttribute(
+            "aria-hidden",
+            "false"
+        );
+    
+    
         display.title =
             `${currentTrack.title} — ` +
             `${countLabel} plays`;
-
-
+    
+    
+        /*
+         * Put something visible in the
+         * display immediately, before the
+         * scrolling loop begins.
+         */
+        displayText.textContent =
+            message
+                .slice(
+                    0,
+                    DISPLAY_WIDTH
+                )
+                .padEnd(
+                    DISPLAY_WIDTH,
+                    " "
+                );
+    
+    
         startScroll(
-            getDisplayMessage()
+            message
         );
     }
 
