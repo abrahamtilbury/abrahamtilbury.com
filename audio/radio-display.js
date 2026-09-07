@@ -21,7 +21,7 @@
     const SCROLL_HOLD_MS = 1500;
 
     const COUNTS_URL =
-        "/audio/play-counts.json";
+        "https://abraham-radio-counter.abrahamtilbury.workers.dev/counts";
 
 
     /* ========================================
