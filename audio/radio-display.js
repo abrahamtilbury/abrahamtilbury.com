@@ -2,7 +2,6 @@
 
     "use strict";
 
-
     /* ========================================
        DISPLAY SETTINGS
     ======================================== */
@@ -23,7 +22,6 @@
     const COUNTS_URL =
         "https://abraham-radio-counter.abrahamtilbury.workers.dev/counts";
 
-
     /* ========================================
        DISPLAY ELEMENTS
     ======================================== */
@@ -38,14 +36,12 @@
             "[data-radio-display-text]"
         );
 
-
     if (
         !display ||
         !displayText
     ) {
         return;
     }
-
 
     /* ========================================
        ACCESSIBILITY
@@ -55,7 +51,6 @@
         window.matchMedia(
             "(prefers-reduced-motion: reduce)"
         );
-
 
     /* ========================================
        STATE
@@ -69,7 +64,6 @@
     let radioPlaying = false;
 
     let scrollTimer = null;
-
 
     /* ========================================
        SCROLL CONTROL
@@ -87,7 +81,6 @@
         }
     }
 
-
     /* ========================================
        PLAY COUNT
     ======================================== */
@@ -104,7 +97,6 @@
             return "—";
         }
 
-
         return Math.max(
             0,
             Math.trunc(count)
@@ -112,7 +104,6 @@
             "en-AU"
         );
     }
-
 
     /* ========================================
        DISPLAY MESSAGE
@@ -123,7 +114,6 @@
         if (!currentTrack) {
             return "";
         }
-
 
         const rawCount =
             playCounts[
@@ -142,7 +132,6 @@
                 .toUpperCase();
         }
         
-        
         if (!Number.isFinite(rawCount)) {
 
             return currentTrack
@@ -150,19 +139,16 @@
                 .toUpperCase();
         }
         
-        
         const playWord =
             rawCount === 1
                 ? "PLAY"
                 : "PLAYS";
-        
         
         return (
             `${currentTrack.title} · ` +
             `${countLabel} ${playWord}`
         ).toUpperCase();
     }
-
 
     /* ========================================
        TICKER
@@ -173,7 +159,6 @@
     ) {
 
         stopScroll();
-
 
         /*
          * Don't animate for people who have
@@ -199,14 +184,12 @@
             return;
         }
 
-
         /*
          * Three spaces create a visible gap
          * between repetitions.
          */
         const cycle =
             `${message}   `;
-
 
         /*
          * Add enough beginning characters
@@ -219,9 +202,7 @@
                 DISPLAY_WIDTH
             );
 
-
         let offset = 0;
-
 
         function renderFrame() {
 
@@ -237,7 +218,6 @@
                         " "
                     );
 
-
             /*
              * Longer pause when title first
              * reaches the left side.
@@ -247,11 +227,9 @@
                     ? SCROLL_HOLD_MS
                     : SCROLL_STEP_MS;
 
-
             offset =
                 (offset + 1) %
                 cycle.length;
-
 
             scrollTimer =
                 window.setTimeout(
@@ -260,10 +238,8 @@
                 );
         }
 
-
         renderFrame();
     }
-
 
     /* ========================================
        HIDE
@@ -284,7 +260,6 @@
         displayText.textContent = "";
     }
 
-
     /* ========================================
        UPDATE
     ======================================== */
@@ -301,17 +276,14 @@
             return;
         }
     
-    
         const countLabel =
             formatPlayCount(
                 currentTrack.id
             );
     
-    
         const message =
             getDisplayMessage() ||
             currentTrack.title.toUpperCase();
-    
     
         display.hidden = false;
     
@@ -319,7 +291,6 @@
             "aria-hidden",
             "false"
         );
-    
     
         display.title =
             `${currentTrack.title} — ` +
@@ -342,12 +313,10 @@
                     " "
                 );
     
-    
         startScroll(
             message
         );
     }
-
 
     /* ========================================
        RADIO EVENTS
@@ -360,12 +329,10 @@
             const detail =
                 event.detail || {};
     
-    
             radioPlaying =
                 Boolean(
                     detail.playing
                 );
-    
     
             currentTrack =
                 detail.track &&
@@ -377,11 +344,9 @@
                     ? detail.track
                     : null;
     
-    
             updateDisplay();
         }
     );
-    
     
     /*
      * Update the visible count immediately
@@ -394,7 +359,6 @@
             const detail =
                 event.detail || {};
     
-    
             if (
                 typeof detail.trackId !==
                     "string" ||
@@ -404,7 +368,6 @@
             ) {
                 return;
             }
-    
     
             playCounts[
                 detail.trackId
@@ -416,17 +379,14 @@
                     )
                 );
     
-    
             updateDisplay();
         }
     );
-
 
     reduceMotion.addEventListener?.(
         "change",
         updateDisplay
     );
-
 
     /* ========================================
        LOAD COUNTS
@@ -445,7 +405,6 @@
                     }
                 );
 
-
             if (!response.ok) {
 
                 throw new Error(
@@ -453,10 +412,8 @@
                 );
             }
 
-
             const payload =
                 await response.json();
-
 
             if (
                 payload &&
@@ -471,7 +428,6 @@
                 updateDisplay();
             }
 
-
         } catch (error) {
 
             /*
@@ -485,8 +441,6 @@
         }
     }
 
-
     loadPlayCounts();
-
 
 })();
