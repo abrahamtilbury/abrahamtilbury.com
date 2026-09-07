@@ -398,11 +398,15 @@ a:active {
 
 .radio-display-text {
     display: block;
-
     width: 9ch;
-
+    height: 16px;
     overflow: hidden;
-
+    color: inherit;
+    font: inherit;
+    line-height: 16px;
+    opacity: 1;
+    visibility: visible;
+    overflow: hidden;
     white-space: pre;
 }
 
