@@ -192,26 +192,38 @@
                     );
                 }
 
-
                 /*
                  * Browser tab title.
                  */
 
                 document.title =
                     nextDocument.title;
-
-
-                updateMeta(
-                    nextDocument,
-                    'meta[name="description"]'
-                );
-
-
-                updateLink(
-                    nextDocument,
+                
+                [
+                    'meta[name="description"]',
+                    'meta[property="og:title"]',
+                    'meta[property="og:description"]',
+                    'meta[property="og:image"]',
+                    'meta[property="og:url"]',
+                    'meta[property="og:type"]',
+                    'meta[property="og:site_name"]',
+                    'meta[name="twitter:card"]',
+                    'meta[name="twitter:title"]',
+                    'meta[name="twitter:description"]',
+                    'meta[name="twitter:image"]',
                     'link[rel="canonical"]'
+                ].forEach(
+                    selector => {
+                        syncHeadElement(
+                            nextDocument,
+                            selector
+                        );
+                    }
                 );
-
+                
+                syncStructuredData(
+                    nextDocument
+                );
 
                 /*
                  * Update URL only after the
@@ -283,69 +295,78 @@
     }
 
 
-    function updateMeta(
+    function syncHeadElement(
         nextDocument,
         selector
     ) {
-
+    
         const current =
-            document.querySelector(
+            document.head.querySelector(
                 selector
             );
-
-
+    
         const next =
-            nextDocument.querySelector(
+            nextDocument.head.querySelector(
                 selector
             );
-
-
-        if (
-            current &&
-            next
-        ) {
-
-            current.setAttribute(
-                "content",
-                next.getAttribute(
-                    "content"
-                )
+    
+    
+        if (!next) {
+    
+            if (current) {
+                current.remove();
+            }
+    
+            return;
+        }
+    
+    
+        const replacement =
+            next.cloneNode(true);
+    
+    
+        if (current) {
+    
+            current.replaceWith(
+                replacement
+            );
+    
+        } else {
+    
+            document.head.appendChild(
+                replacement
             );
         }
     }
-
-
-    function updateLink(
-        nextDocument,
-        selector
+    
+    
+    function syncStructuredData(
+        nextDocument
     ) {
-
-        const current =
-            document.querySelector(
-                selector
+    
+        document.head
+            .querySelectorAll(
+                'script[type="application/ld+json"]'
+            )
+            .forEach(
+                script => {
+                    script.remove();
+                }
             );
-
-
-        const next =
-            nextDocument.querySelector(
-                selector
+    
+    
+        nextDocument.head
+            .querySelectorAll(
+                'script[type="application/ld+json"]'
+            )
+            .forEach(
+                script => {
+                    document.head.appendChild(
+                        script.cloneNode(true)
+                    );
+                }
             );
-
-
-        if (
-            current &&
-            next
-        ) {
-
-            current.setAttribute(
-                "href",
-                next.getAttribute(
-                    "href"
-                )
-            );
-        }
     }
-
 
     /*
      * Internal link navigation.
