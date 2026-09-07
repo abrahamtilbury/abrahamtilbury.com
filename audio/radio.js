@@ -49,7 +49,6 @@
         }
     ];
 
-
     /* ========================================
        SETTINGS
     ======================================== */
@@ -75,7 +74,6 @@
     const status =
         document.querySelector("[data-radio-status]");
     
-    
     if (
         !playButton ||
         !volumeSlider ||
@@ -84,12 +82,10 @@
         return;
     }
     
-    
     const volumeControl =
         volumeSlider.closest(
             ".radio-volume"
         );
-    
     
     const isIOS =
         /iPhone|iPad|iPod/i.test(
@@ -100,7 +96,6 @@
             navigator.maxTouchPoints > 1
         );
     
-    
     if (isIOS) {
     
         document.documentElement
@@ -110,7 +105,6 @@
             volumeControl.hidden = true;
         }
     }
-
 
     /* ========================================
        AUDIO
@@ -124,7 +118,6 @@
      */
 
     audio.preload = "none";
-
 
     /* ========================================
        STATE
